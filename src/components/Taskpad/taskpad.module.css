@@ -1,0 +1,26 @@
+.Taskpad {
+    color: aliceblue;
+    font-family: consolas;
+    background-color: rgb(225, 193, 117);
+    height: auto;
+    width: auto;
+    align-self: center;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+#inputText {
+    border-radius: 10px;
+    height: 30px;
+}
+
+#addBut {
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-left: 5px;
+    font-family: consolas;
+    font-weight: 800;
+}

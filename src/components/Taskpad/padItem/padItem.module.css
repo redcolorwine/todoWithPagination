@@ -1,0 +1,16 @@
+.padItem {
+    font-size: 15pt;
+    font-weight: 800;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30px 20px;
+}
+
+.padItem button {
+    border-radius: 5px;
+    height: 25px;
+    margin-left: 20px;
+    font-family: consolas;
+    font-weight: 800;
+}
