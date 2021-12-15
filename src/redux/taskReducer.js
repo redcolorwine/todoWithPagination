@@ -10,6 +10,7 @@ let initialState = {
         { id: 4, message: 'Занятие по html' },
     ],
     arealabel: '',
+    errorMessage: false
 }
 /*Инициализируем редьюсер*/
 const taskReducer = (state = initialState, action) => {
@@ -40,6 +41,12 @@ const taskReducer = (state = initialState, action) => {
                 ...state,
                 tasks: copyTask
             };
+        
+        case 'ERROR_MESSAGE':
+            return{
+                ...state,
+                errorMessage: action.errorToggle
+            }
         default: return state;
     }
 }

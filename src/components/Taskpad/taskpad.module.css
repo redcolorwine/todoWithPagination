@@ -24,3 +24,28 @@
     font-family: consolas;
     font-weight: 800;
 }
+
+.ErrorMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 400px;
+    height: auto;
+    border-radius: 15px;
+    background-color: brown;
+    color: wheat;
+    font-family: consolas;
+    font-size: 12pt;
+}
+
+.ErrorMessage button {
+    font-family: consolas;
+    font-size: 12pt;
+    font-weight: 800;
+    border-radius: 10px;
+    background-color: tomato;
+    color: wheat;
+    margin-bottom: 10px;
+}

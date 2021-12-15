@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorMessage from "./errorMessage";
 import PadItem from "./padItem/padItem";
 import cmedia from './taskpad.module.css'
 
@@ -17,7 +18,7 @@ const Taskpad = (props) => {
         /* Удаляем пробелы с помощью trim(), чтобы избежать добавление пустых значений */
         if (props.arealabel.trim() !== '') {
             props.addTask(props.arealabel);
-        } else { alert('Введите задачу!') }
+        } else { props.setError(true) }
 
     }
     /* Получаем массив задач из state и при помощи map() создаем массив компонент PadItem передавая значения массива как параметры*/
@@ -33,14 +34,18 @@ const Taskpad = (props) => {
     let taskheader = declOfNum(countItems, ['Задача', 'Задачи', 'Задач']);
 
     return (
-        <div className={cmedia.Taskpad}>
-            <h1>{countItems} {taskheader}</h1>
-            {items}
-            <div className={cmedia.addPad}>
-                <input id={cmedia.inputText} type="text" ref={areaRef} onChange={onChangeArea} value={props.arealabel} />
-                <input id={cmedia.addBut} type="button" value="Добавить" onClick={onAddBut} />
-            </div>
-        </div>
+        <>
+            {props.errorMessage ? <ErrorMessage setError={props.setError} /> :
+                <div className={cmedia.Taskpad}>
+                    <h1>{countItems} {taskheader}</h1>
+                    {items}
+                    <div className={cmedia.addPad}>
+                        <input id={cmedia.inputText} type="text" ref={areaRef} onChange={onChangeArea} value={props.arealabel} />
+                        <input id={cmedia.addBut} type="button" value="Добавить" onClick={onAddBut} />
+                    </div>
+                </div>}
+
+        </>
     )
 }
 

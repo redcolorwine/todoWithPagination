@@ -5,7 +5,8 @@ import Taskpad from "./Taskpad/taskpad";
 let mapStateToProps = (state) => {
     return {
         tasks: state.taskPage.tasks,
-        arealabel: state.taskPage.arealabel
+        arealabel: state.taskPage.arealabel,
+        errorMessage: state.taskPage.errorMessage
     }
 }
 /* Передаем функции для работы со state в презентационную компоненту */
@@ -28,6 +29,12 @@ let mapDispatchToProps = (dispatch) => {
             dispatch({
                 type: 'DELETE_TASK',
                 delId: delId
+            })
+        },
+        setError: (errorToggle)=>{
+            dispatch({
+                type:'ERROR_MESSAGE',
+                errorToggle:errorToggle
             })
         }
     }
