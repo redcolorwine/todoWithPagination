@@ -8,22 +8,19 @@ import Pagination from "./pagination";
 let areaRef = React.createRef();
 
 const Taskpad = (props) => {
+    //хуки для отображения загрузки, для текущей страницы и количества задач на странице
     const [isLoading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [tasksPerPage] = useState(12);
+    //хук для загрузки данных API, чтобы отрисовка не произошла раньше загрузки данных
     useEffect(() => {
-
         axios.get('https://jsonplaceholder.typicode.com/todos').then(response => {
-            // for (let i = 0; i < 10; i++) {
-            //     props.setTasks(response.data[i]);
-            // }
-
             props.setTasks(response.data);
             setLoading(false);
         })
     }, [])
 
-
+    //если данные не получены, отображаем загрузку
     if (isLoading) {
         return (
             <div>
@@ -31,14 +28,12 @@ const Taskpad = (props) => {
             </div>
         )
     }
-    
+    //переменные для пагинации
     const indexOfLastPost = currentPage * tasksPerPage;
     const indexOfFirstPost = indexOfLastPost - tasksPerPage;
     const currentTasks = props.tasksServer.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(props.tasksServer)
-    console.log(currentTasks)
-    console.log(indexOfLastPost)
-    console.log(indexOfFirstPost)
+
+    //функция для выбора текущей страницы
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     }
@@ -51,7 +46,6 @@ const Taskpad = (props) => {
     }
     /* Обработка кнопки добавления задачи */
     let onAddBut = () => {
-        console.log(props.tasksServer);
 
         /* Удаляем пробелы с помощью trim(), чтобы избежать добавление пустых значений */
         if (props.arealabel.trim() !== '') {
@@ -59,13 +53,7 @@ const Taskpad = (props) => {
         } else { props.setError(true) }
 
     }
-    /* Получаем массив задач из state и при помощи map() создаем массив компонент PadItem передавая значения массива как параметры*/
-    // let items = props.tasks.map((task) => {
-    //     return (<PadItem deleteTask={props.deleteTask} key={task.id} item={task.message} id={task.id} />)
-    // })
-    // let items = props.tasksServer.map((task) => {
-    //     return (<PadItem completeTask={props.completeTask} deleteTask={props.deleteTask} key={task.id} item={task.title} id={task.id} completed={task.completed} />)
-    // })
+    /* Получаем массив задач и при помощи map() создаем массив компонент PadItem передавая значения массива как параметры*/
     let items = currentTasks.map((task) => {
         return (<PadItem completeTask={props.completeTask} deleteTask={props.deleteTask} key={task.id} item={task.title} id={task.id} completed={task.completed} />)
     })
@@ -76,6 +64,7 @@ const Taskpad = (props) => {
         return words[(number % 100 > 4 && number % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(number % 10 < 5) ? Math.abs(number) % 10 : 5]];
     }
     let taskheader = declOfNum(countItems, ['Задача', 'Задачи', 'Задач']);
+
     return (
         <>
             {props.errorMessage ? <ErrorMessage setError={props.setError} /> :

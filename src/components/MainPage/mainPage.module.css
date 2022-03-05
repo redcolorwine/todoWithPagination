@@ -5,14 +5,14 @@
     margin-top: 10%;
     text-align: center;
     background-color: rgb(25, 180, 250);
-    color:white;
+    color: white;
     font-family: consolas;
     border-radius: 30px;
     padding: 10px;
 
 }
 
-.mainPage p{
+.mainPage p {
     padding-top: 20px;
     font-size: 15pt;
     line-height: 40px;

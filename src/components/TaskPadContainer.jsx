@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Taskpad from "./Taskpad/taskpad";
-import TaskpadClass from './Taskpad/taskpadClass';
+
 
 /* Передаем нужный state в презентационную компоненту */
 let mapStateToProps = (state) => {
@@ -52,7 +52,6 @@ let mapDispatchToProps = (dispatch) => {
                 isChecked
             })
         }
-        //isChecked checkId
     }
 }
 

@@ -4,10 +4,10 @@ import cmedia from './padItem.module.css'
     Сообщение + кнопка удаления
 */
 const PadItem = (props) => {
-    const [check, setCheck] = useState(false);
+
     const onBut = () => {
-        if (props.completed) { props.completeTask(props.id,false) }
-        else props.completeTask(props.id,true)
+        if (props.completed) { props.completeTask(props.id, false) }
+        else props.completeTask(props.id, true)
     }
     return (
         <div className={cmedia.padItem}>
