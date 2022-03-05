@@ -1,18 +1,17 @@
-
-
 .pageItem {
     display: inline;
     padding-left: 10px;
-    
+
 }
 
-.active{
-    color:blue;
-}
-.pageLink {
-    color:white;
+.active {
+    color: blue;
     text-decoration: none;
     font-family: consolas;
 }
 
-
+.pageLink {
+    color: white;
+    text-decoration: none;
+    font-family: consolas;
+}
