@@ -1,12 +1,14 @@
 import { connect } from "react-redux";
 import Taskpad from "./Taskpad/taskpad";
+import TaskpadClass from './Taskpad/taskpadClass';
 
 /* Передаем нужный state в презентационную компоненту */
 let mapStateToProps = (state) => {
     return {
         tasks: state.taskPage.tasks,
         arealabel: state.taskPage.arealabel,
-        errorMessage: state.taskPage.errorMessage
+        errorMessage: state.taskPage.errorMessage,
+        tasksServer: state.taskPage.tasksServer
     }
 }
 /* Передаем функции для работы со state в презентационную компоненту */
@@ -31,12 +33,26 @@ let mapDispatchToProps = (dispatch) => {
                 delId: delId
             })
         },
-        setError: (errorToggle)=>{
+        setError: (errorToggle) => {
             dispatch({
-                type:'ERROR_MESSAGE',
-                errorToggle:errorToggle
+                type: 'ERROR_MESSAGE',
+                errorToggle: errorToggle
+            })
+        },
+        setTasks: (tasks) => {
+            dispatch({
+                type: 'SET_TASKS',
+                tasks
+            })
+        },
+        completeTask: (checkId, isChecked) => {
+            dispatch({
+                type: 'COMPLETE_TASK',
+                checkId,
+                isChecked
             })
         }
+        //isChecked checkId
     }
 }
 

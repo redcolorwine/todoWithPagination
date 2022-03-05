@@ -10,18 +10,31 @@ let initialState = {
         { id: 4, message: 'Занятие по html' },
     ],
     arealabel: '',
-    errorMessage: false
+    errorMessage: false,
+    tasksServer: ''
+    // tasksServer: [
+    //      { id: 0, title: '', completed: false },
+
+    // ]
 }
 /*Инициализируем редьюсер*/
 const taskReducer = (state = initialState, action) => {
     switch (action.type) {
         /* Добавление задачи */
         case 'ADD_TASK':
-            let tasklength = state.tasks.length + 1; /* Получаем длину массива чтобы определить ID добавляемого элемента */
+            let tasklength = state.tasksServer.length + 1; /* Получаем длину массива чтобы определить ID добавляемого элемента */
             return {
                 ...state, /* Спред-оператор для глубокой копии */
-                tasks: [...state.tasks, { message: action.task, id: tasklength }],
+                tasksServer: [...state.tasksServer, { title: action.task, id: tasklength }],
                 arealabel: ''
+            };
+
+        case 'SET_TASKS':
+            return {
+                ...state, /* Спред-оператор для глубокой копии */
+                // tasksServer: [...state.tasksServer, action.tasks],
+                tasksServer: action.tasks
+
             };
         /* Изменение поля ввода */
         case 'CHANGE_TASK_AREA':
@@ -31,19 +44,32 @@ const taskReducer = (state = initialState, action) => {
             };
         /* Удаление задачи */
         case 'DELETE_TASK':
-            /* Применяем фильтр к массимву, чтобы отсеять удаляемый по ID элемент и возращаем отфильтрованный массив */
-            let copyTask = state.tasks.filter(item => item.id !== action.delId);
+            /* Применяем фильтр к массиву, чтобы отсеять удаляемый по ID элемент и возращаем отфильтрованный массив */
+            let copyTask = state.tasksServer.filter(item => item.id !== action.delId);
             /* Обновляем ID элементов после удаления, чтобы избежать дублирования */
             for (let i = 0; i < copyTask.length; i++) {
                 copyTask[i].id = i + 1;
             }
             return {
                 ...state,
-                tasks: copyTask
+                tasksServer: copyTask
             };
-        
+        /* Выполнение задачи */
+        case 'COMPLETE_TASK':
+
+            return {
+                ...state,
+                tasksServer: state.tasksServer.map(task => {
+                    if (task.id === action.checkId) {
+                        return { ...task, completed: action.isChecked }
+                    } else {
+                        return task;
+                    }
+                })
+            };
+
         case 'ERROR_MESSAGE':
-            return{
+            return {
                 ...state,
                 errorMessage: action.errorToggle
             }

@@ -14,3 +14,23 @@
     font-family: consolas;
     font-weight: 800;
 }
+
+.nonchecked{
+    display: inline-block;
+    height: 20px;
+    width: 30px;
+    background: red;
+    border-radius: 30px;
+}
+.checked{
+    background-color: green;
+    display: inline-block;
+    height: 20px;
+    width: 30px;
+    border-radius: 30px;
+}
+.buts{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
