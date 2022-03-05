@@ -3,6 +3,16 @@
 .pageItem {
     display: inline;
     padding-left: 10px;
+    
 }
 
-.pageLink {}
+.active{
+    color:blue;
+}
+.pageLink {
+    color:white;
+    text-decoration: none;
+    font-family: consolas;
+}
+
+

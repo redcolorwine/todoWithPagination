@@ -14,16 +14,19 @@
     font-family: consolas;
     font-weight: 800;
 }
-
+.delBut{
+    color:white;
+    background-color: rgb(253, 142, 51);
+}
 .nonchecked{
     display: inline-block;
     height: 20px;
     width: 30px;
-    background: red;
+    background: white;
     border-radius: 30px;
 }
 .checked{
-    background-color: green;
+    background-color: blue;
     display: inline-block;
     height: 20px;
     width: 30px;

@@ -13,7 +13,7 @@ const PadItem = (props) => {
         <div className={cmedia.padItem}>
             <span>{props.item}</span>
             <div className={cmedia.buts}>
-                <button onClick={() => { props.deleteTask(props.id) }}>Удалить</button>
+                <button className={cmedia.delBut} onClick={() => { props.deleteTask(props.id) }}>Удалить</button>
                 <button onClick={onBut} className={props.completed !== false ? cmedia.checked : cmedia.nonchecked} />
             </div>
         </div>

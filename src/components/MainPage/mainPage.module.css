@@ -1,0 +1,13 @@
+.mainPage {
+    height: 400px;
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 10%;
+    text-align: center;
+    background-color: rgb(25, 180, 250);
+    color:white;
+    font-family: consolas;
+    border-radius: 30px;
+    padding: 10px;
+
+}

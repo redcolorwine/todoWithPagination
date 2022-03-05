@@ -1,7 +1,7 @@
 .Taskpad {
     color: aliceblue;
     font-family: consolas;
-    background-color: rgb(225, 193, 117);
+    background-color: rgb(25, 180, 250);
     height: auto;
     width: auto;
     align-self: center;
@@ -23,6 +23,8 @@
     margin-left: 5px;
     font-family: consolas;
     font-weight: 800;
+    background-color: rgb(253, 142, 51);
+    color:white;
 }
 
 .ErrorMessage {
